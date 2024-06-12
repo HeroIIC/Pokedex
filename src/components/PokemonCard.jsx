@@ -1,15 +1,13 @@
 function PokemonCard({Pokemon}) {
-   
-    
-    return (
-        <><figure>
-  {Pokemon.imgSrc ?(<img src={Pokemon.imgSrc} alt={Pokemon.name} />)
-  : (<p>???</p>) }
+return (
+<figure className="card">
+{Pokemon.imgSrc ?(<img src={Pokemon.imgSrc} alt={Pokemon.name} className="card-img" />)
+: (<p>???</p>) }
     
     
             <figcaption>{Pokemon.name}</figcaption>
      
-        </figure><img className="Bulbasaur" /></>
+        </figure>
     )
 }
 
