@@ -1,11 +1,16 @@
-
-const NavBar = ({ PokemonIndex, handlePrevious, handleNext, PokemonListLength }) => {
+const NavBar = ({ pokemonList,setPokemonIndex}) => {
+if (!pokemonList || pokemonList.length === 0) {
+  return ;
+}
   return (
     <div className="navigation-buttons">
-      {PokemonIndex > 0 && <button onClick={handlePrevious}>Précédent</button>}
-      {PokemonIndex < PokemonListLength -1 && <button onClick={handleNext}>Suivant</button>}
+      {pokemonList.map((pokemon, index) => (
+        <div key={index} >
+          <button onClick={()=> setPokemonIndex(index)}> {pokemon.name}</button>
+        </div>
+      ))} 
     </div>
-  );
-};
+    )
+  }
 
 export default NavBar;

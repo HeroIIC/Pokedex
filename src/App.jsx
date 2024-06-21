@@ -5,7 +5,7 @@ import { useState } from 'react';
 import NavBar from './components/NavBar';
 import PokemonCard from './components/PokemonCard'
 
-const PokemonList = [
+const pokemonList = [
   {
     name: "bulbasaur",
     imgSrc:
@@ -32,54 +32,17 @@ const PokemonList = [
   }
 ];
 function App() {
-  const [PokemonIndex, setPokemonIndex] = useState(0)
-
-  const handlePrevious = () => {
-    if (PokemonIndex > 0) {
-      setPokemonIndex(PokemonIndex - 1);
-    }
-  };
-
-  const handleNext = () => {
-    if (PokemonIndex < PokemonList.length - 1) {
-      setPokemonIndex(PokemonIndex + 1);
-    }
-  };
+  const [pokemonIndex, setPokemonIndex] = useState(0)
   return (
-
-    // <Router>
       <div>
         <h1>Pokédex</h1>
-        <NavBar 
-          handlePrevious={handlePrevious} 
-          handleNext={handleNext} 
-          PokemonListLength={PokemonList.length}
-          PokemonIndex={PokemonIndex}
-          // showPrevious={PokemonIndex > 0} 
-          // showNext={PokemonIndex < PokemonList.length - 1} 
-        />
-        {/* <Routes>
-          <Route path="/" element={<PokemonList />} />
-          <Route path="/pokemon/:name" element={<PokemonDetails />} />
-        </Routes> */}
+          <NavBar pokemonList={pokemonList} setPokemonIndex={setPokemonIndex}/>
         <div>
-        <PokemonCard Pokemon={PokemonList[PokemonIndex]}/>
-       </div>
+          <PokemonCard Pokemon={pokemonList[pokemonIndex]}/>
+        </div>
       </div>
-    // </Router>
-    
   );
 }
-
-
-  //   return (
-//     <>
-//     <div>
-//       <PokemonCard Pokemon={pokemonList[0]}/>
-//       </div>
-//     </>
-//   )
-// }
 
 export default App
 
