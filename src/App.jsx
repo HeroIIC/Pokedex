@@ -1,10 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import MyTitle from "./MyTitle"
+import { useState } from 'react';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import PokemonList from './PokemonList';
+// import PokemonDetails from './PokemonDetails';
+import NavBar from './components/NavBar';
 import PokemonCard from './components/PokemonCard'
-const pokemonList = [
+
+const PokemonList = [
   {
     name: "bulbasaur",
     imgSrc:
@@ -27,20 +28,58 @@ const pokemonList = [
   },
   {
     name: "mew",
-    imgSrc:
-  },
+    //
+  }
 ];
 function App() {
-  const [count, setCount] = useState(0)
+  const [PokemonIndex, setPokemonIndex] = useState(0)
 
+  const handlePrevious = () => {
+    if (PokemonIndex > 0) {
+      setPokemonIndex(PokemonIndex - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (PokemonIndex < PokemonList.length - 1) {
+      setPokemonIndex(PokemonIndex + 1);
+    }
+  };
   return (
-    <>
-    <div>
-      <PokemonCard Pokemon={PokemonList[0]}/>
+
+    // <Router>
+      <div>
+        <h1>Pokédex</h1>
+        <NavBar 
+          handlePrevious={handlePrevious} 
+          handleNext={handleNext} 
+          PokemonListLength={PokemonList.length}
+          PokemonIndex={PokemonIndex}
+          // showPrevious={PokemonIndex > 0} 
+          // showNext={PokemonIndex < PokemonList.length - 1} 
+        />
+        {/* <Routes>
+          <Route path="/" element={<PokemonList />} />
+          <Route path="/pokemon/:name" element={<PokemonDetails />} />
+        </Routes> */}
+        <div>
+        <PokemonCard Pokemon={PokemonList[PokemonIndex]}/>
+       </div>
       </div>
-    </>
-  )
+    // </Router>
+    
+  );
 }
+
+
+  //   return (
+//     <>
+//     <div>
+//       <PokemonCard Pokemon={pokemonList[0]}/>
+//       </div>
+//     </>
+//   )
+// }
 
 export default App
 
