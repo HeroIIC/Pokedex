@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import PokemonList from './PokemonList';
 // import PokemonDetails from './PokemonDetails';
@@ -31,8 +31,15 @@ const pokemonList = [
     //
   }
 ];
+
+
 function App() {
   const [pokemonIndex, setPokemonIndex] = useState(0)
+
+  useEffect(()=> {
+    alert("hello pokemon trainer:)");
+  },[])
+
   return (
       <div>
         <h1>Pokédex</h1>
@@ -40,6 +47,7 @@ function App() {
         <div>
           <PokemonCard Pokemon={pokemonList[pokemonIndex]}/>
         </div>
+        <h2>{pokemonList[pokemonIndex].name}</h2>
       </div>
   );
 }

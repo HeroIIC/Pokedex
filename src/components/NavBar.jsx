@@ -1,13 +1,22 @@
-const NavBar = ({ pokemonList,setPokemonIndex}) => {
-if (!pokemonList || pokemonList.length === 0) {
-  return ;
-}
+import React from 'react';
+
+const NavBar = ({ pokemonList, setPokemonIndex }) => {
+  const handleClick = (index, name) => {
+    setPokemonIndex(index);
+    if (name.toLowerCase() === 'pikachu') {
+      alert('pika pikachu !!!');
+    }
+  };
   return (
     <div className="navigation-buttons">
       {pokemonList.map((pokemon, index) => (
-        <div key={index} >
-          <button onClick={()=> setPokemonIndex(index)}> {pokemon.name}</button>
-        </div>
+          <button 
+          key={index}
+          onClick={()=> handleClick(index,pokemon.name)}
+          > 
+          
+          {pokemon.name}</button>
+        
       ))} 
     </div>
     )
